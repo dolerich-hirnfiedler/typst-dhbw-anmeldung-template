@@ -8,7 +8,7 @@ Typst-Template zur Anmeldung von:
 - Bachelorarbeit (Modul T_3300, 6. Semester)
 
 Live Preview automatisches setzen von projekt:
-![](recoding.gif)
+![](./recoding.gif)
 Basierend auf der Vorlage vom  24.11.2024
 ![](./erste_seite-0.png)
 Ein Preview der Pdf kann hier gesehen werden: [Beispiel-PDF](./main.pdf)
