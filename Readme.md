@@ -9,7 +9,7 @@ Typst-Template zur Anmeldung von:
 
 Basierend auf der Vorlage vom  24.11.2024
 ![](./erste_seite-0.png)
-Ein Preview der Pdf kann hier gesehen werden: ![Beispiel-PDF](./main.pdf)
+Ein Preview der Pdf kann hier gesehen werden: [Beispiel-PDF](./main.pdf)
 
 Compile-Command:
 ```bash
