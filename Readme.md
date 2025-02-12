@@ -9,7 +9,7 @@ Typst-Template zur Anmeldung von:
 
 Basierend auf der Vorlage vom  24.11.2024
 Ein Preview der Pdf kann hier gesehen werden:
-[](./main.pdf)
+[Beispiel-PDF](./main.pdf)
 
 Compile-Command:
 ```bash
@@ -60,9 +60,9 @@ data.typ sieht wie folgt aus:
   year: 2025,
 )
 ```
-- module: Ist eine Variable aus [](./modules.typ)
+- module: Ist eine Variable aus [modules.typ](./modules.typ)
 
-Interessant ist außerdem [](./literatur.bib). Dabei handelt es sich um ein Literatur-Verzeichnis im bibtex-Format.
+Interessant ist außerdem [literatur](./literatur.bib). Dabei handelt es sich um ein Literatur-Verzeichnis im bibtex-Format.
 Diese Datei wird genutzt um automatisch die Literatur-Liste zu generieren. 
 
 
