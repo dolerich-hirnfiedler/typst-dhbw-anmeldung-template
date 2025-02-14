@@ -11,7 +11,7 @@
       stroke: none,
       columns: (1fr, 1fr),
       row-gutter: 2pt,
-      grid.hline(stroke: .33pt + black),
+      grid.hline(stroke: .5pt + black),
       align(
         left,
         grid(
@@ -46,7 +46,7 @@
           text(size: 2.3em, weight: "extralight", [Informatik]),
         ),
       ),
-      grid.hline(stroke: .33pt + black),
+      grid.hline(stroke: .5pt + black),
       if counter(page).get().first() == 1 {
         grid.cell(
           colspan: 2,
@@ -191,31 +191,31 @@
         columns: (auto, 1fr),
         rows: (auto, auto, 1fr),
         stroke: none,
-        table.vline(x: 0, stroke: .33pt + black),
-        table.vline(x: 1, position: end, stroke: .33pt + black),
-        table.vline(x: 1, position: start, stroke: .33pt + black),
-        table.hline(stroke: .33pt + black),
+        table.vline(x: 0, stroke: .5pt + black),
+        table.vline(x: 1, position: end, stroke: .5pt + black),
+        table.vline(x: 1, position: start, stroke: .5pt + black),
+        table.hline(stroke: .5pt + black),
         [Kurs], [#student_kurs],
-        table.hline(stroke: .33pt + black),
+        table.hline(stroke: .5pt + black),
         [Student/in], [#student],
         [Email], [#breakable_text(student_email)],
-        table.hline(stroke: .33pt + black),
+        table.hline(stroke: .5pt + black),
       ),
       table(
         columns: (auto, 1fr),
         rows: (auto, auto, auto, auto, 1fr),
         stroke: none,
-        table.vline(x: 0, stroke: .33pt + black),
-        table.vline(x: 1, position: end, stroke: .33pt + black),
-        table.vline(x: 1, position: start, stroke: .33pt + black),
-        table.hline(stroke: .33pt + black),
+        table.vline(x: 0, stroke: .5pt + black),
+        table.vline(x: 1, position: end, stroke: .5pt + black),
+        table.vline(x: 1, position: start, stroke: .5pt + black),
+        table.hline(stroke: .5pt + black),
         [Dualer Partner], [#dualer_partner],
-        table.hline(stroke: .33pt + black),
+        table.hline(stroke: .5pt + black),
         [Betreuer/in], [#betreuer_name],
         [akad. Titel/Studium], [#betreuer_akademischer_titel],
         [Email], [#breakable_text(betreuer_email)],
         [Tel.], [#betreuer_telefon_nummer],
-        table.hline(stroke: .33pt + black),
+        table.hline(stroke: .5pt + black),
       ),
     ),
   )
@@ -246,7 +246,7 @@
 
   table(
     columns: (5cm, 1fr),
-    stroke: .33pt + black,
+    stroke: .5pt + black,
     ..table_data,
   )
   [
