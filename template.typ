@@ -5,6 +5,7 @@
     .replace("-", "-\u{200B}")
 }
 #let dhbw_header = {
+  set text(font: "Libertinus Serif")
   context {
     grid(
       stroke: none,
@@ -17,7 +18,7 @@
           stroke: none,
           columns: 2,
           column-gutter: 0.5em,
-          image("dhbw_logo.svg", height: 1.5cm),
+          image("dhbw_logo.svg", height: 1.7cm),
           place(
             dy: 9.1pt,
             text(
@@ -41,8 +42,8 @@
       align(
         right + bottom,
         box(
-          inset: 2pt,
-          text(size: 2em, weight: "extralight", [Informatik]),
+          inset: (bottom: 3pt),
+          text(size: 2.3em, weight: "extralight", [Informatik]),
         ),
       ),
       grid.hline(stroke: .33pt + black),
@@ -64,19 +65,23 @@
                   text(
                     size: 1.2em,
                     weight: 500,
-                    [Anmeldung einer Projektarbeit],
+                    text(
+                      weight: "bold",
+                      font: "Roboto",
+                      [Anmeldung einer Projektarbeit],
+                    ),
                   ),
                   align(
                     right + bottom,
                     text(
-                      size: 0.6em,
+                      size: 0.8em,
                       [Stand #datetime(day: 11,month: 4,year: 2024).display("[day].[month].[year]")],
                     ),
                   ),
                 ),
               ),
               text(
-                size: 0.7em,
+                size: 0.8em,
                 weight: "thin",
                 [
                   Studiengang Informatik, DHBW Karlsruhe\
@@ -112,17 +117,21 @@
   datum: "",
 ) = {
   set page(
-    margin: (top: 3.5cm, bottom: 2cm),
+    margin: (top: 4cm, bottom: 2cm, left: 2cm, right: 2cm),
     header: align(bottom, box(height: 2cm, dhbw_header)),
-    footer: grid(
-      columns: (auto, 1fr),
-      align(left + bottom, text("")),
-      align(right + bottom, [Seite #context {counter(page).display("1")}]),
+    footer: text(
+      size: 0.8em,
+      grid(
+        columns: (auto, 1fr),
+        align(left + bottom, text("TINF-Themenmitteilung-2024-04-11")),
+        align(right + bottom, [Seite #context {counter(page).display("1")}]),
+      ),
     ),
   )
-  v(0.7cm)
+  set text(font: "Roboto")
+  v(1cm)
   text(
-    size: 0.8em,
+    size: 1em,
     [
       Bitte die ausgefüllte Anmeldung in Ihren Moodle-Kursraum als PDF-Datei hochladen.
     ],
@@ -144,24 +153,25 @@
         if i == module {
           [
             #box(
-              width: 7pt,
-              height: 7pt,
-              stroke: 0.8pt + black,
+              width: 0.75em,
+              height: 0.75em,
+              stroke: 0.12em + black,
               radius: 1pt,
               //fill: black,
               align(
                 center + horizon,
-                text(weight: "extrabold", size: 10.2pt, sym.crossmark),
+                text(weight: "bold", size: 1.2em, sym.crossmark),
               ),
-            ) #i\
+            ) #text(weight: "bold", size: 1.1em, i)\
           ]
         } else {
-          [#box(
-              width: 7pt,
-              height: 7pt,
-              stroke: 0.8pt + black,
+          [
+            #box(
+              width: 0.75em,
+              height: 0.75em,
+              stroke: 0.12em + black,
               radius: 1pt,
-            ) #i\
+            ) #text(weight: "bold", size: 1.1em, i)\
           ]
         }
       },
@@ -211,22 +221,26 @@
   )
 
   let table_data = (
-    [Titel der Arbeit],
+    [#align(horizon, [*Titel der Arbeit*])],
     [#titel],
   )
-  if module == modules.last() {
-    table_data.push([Anschrift])
-    table_data.push([#anschrift]) // Nur für T3300 (Bachelorarbeit)
-  }
-  table_data.push([Problemstellung und Ziel der Arbeit])
+  table_data.push(
+    align(
+      horizon,
+      text(
+        weight: "bold",
+        [Motivation,\ Problemstellung,\ Erwartetes Ergebnis],
+      ),
+    ),
+  )
   table_data.push([#problemstellung])
-  table_data.push([Geplantes Vorgehen])
+  table_data.push(align(horizon, [*Geplantes Vorgehen*]))
   table_data.push([#geplantes_vorgehen])
-  table_data.push([Literatur])
+  table_data.push(align(horizon, [*Literaturliste*]))
   table_data.push([#bibliography("literatur.bib", title: "", full: true)])
-  table_data.push([Sprache der Ausarbeitung])
+  table_data.push([*Sprache der\ Ausarbeitung*])
   table_data.push([#sprache])
-  table_data.push([Datum der Erstellung der Themenmitteilung])
+  table_data.push([*Datum der Erstellung\ der Themenmitteilung*])
   table_data.push([#datum.display("[day].[month].[year]")])
 
 

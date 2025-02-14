@@ -10,7 +10,6 @@
   student_matrikel_nummer: student_matrikel_nummer,
   titel: titel,
   dualer_partner: dualer_partner,
-  anschrift: anschrift,
   betreuer_name: betreuer_name,
   betreuer_akademischer_titel: betreuer_akademischer_titel,
   betreuer_telefon_nummer: betreuer_telefon_nummer,

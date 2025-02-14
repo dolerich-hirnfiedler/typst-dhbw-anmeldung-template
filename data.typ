@@ -8,7 +8,6 @@
 
 #let titel = "Titel"
 #let dualer_partner = "Partnerfirma"
-#let anschrift = "Anschrift Optional"
 #let betreuer_name = "Vorname Nachname"
 #let betreuer_akademischer_titel = "Akademischer Titel"
 #let betreuer_telefon_nummer = "+49 999999999"
