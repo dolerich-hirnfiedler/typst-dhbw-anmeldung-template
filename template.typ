@@ -4,6 +4,7 @@
     .replace("@", "@\u{200B}")
     .replace("-", "-\u{200B}")
 }
+
 #let dhbw_header = {
   set text(font: "Libertinus Serif")
   context {
@@ -11,7 +12,7 @@
       stroke: none,
       columns: (1fr, 1fr),
       row-gutter: 2pt,
-      grid.hline(stroke: .5pt + black),
+      grid.hline(stroke: .50pt + black),
       align(
         left,
         grid(
@@ -20,9 +21,9 @@
           column-gutter: 0.5em,
           image("dhbw_logo.svg", height: 1.7cm),
           place(
-            dy: 9.1pt,
+            dy: 10.5pt,
             text(
-              size: 23.3pt,
+              size: 26.5pt,
               weight: 300,
               font: "Roboto",
               stretch: 70%,
@@ -46,7 +47,7 @@
           text(size: 2.3em, weight: "extralight", [Informatik]),
         ),
       ),
-      grid.hline(stroke: .5pt + black),
+      grid.hline(stroke: .50pt + black),
       if counter(page).get().first() == 1 {
         grid.cell(
           colspan: 2,
@@ -129,7 +130,7 @@
     ),
   )
   set text(font: "Roboto")
-  v(1cm)
+  v(0.7cm)
   text(
     size: 1em,
     [
@@ -178,48 +179,6 @@
     ),
   )
 
-  v(0.5cm)
-
-  block(
-    height: 3.6cm,
-    grid(
-      columns: 2,
-      column-gutter: 1em,
-      rows: 1fr,
-      stroke: none,
-      table(
-        columns: (auto, 1fr),
-        rows: (auto, auto, 1fr),
-        stroke: none,
-        table.vline(x: 0, stroke: .5pt + black),
-        table.vline(x: 1, position: end, stroke: .5pt + black),
-        table.vline(x: 1, position: start, stroke: .5pt + black),
-        table.hline(stroke: .5pt + black),
-        [Kurs], [#student_kurs],
-        table.hline(stroke: .5pt + black),
-        [Student/in], [#student],
-        [Email], [#breakable_text(student_email)],
-        table.hline(stroke: .5pt + black),
-      ),
-      table(
-        columns: (auto, 1fr),
-        rows: (auto, auto, auto, auto, 1fr),
-        stroke: none,
-        table.vline(x: 0, stroke: .5pt + black),
-        table.vline(x: 1, position: end, stroke: .5pt + black),
-        table.vline(x: 1, position: start, stroke: .5pt + black),
-        table.hline(stroke: .5pt + black),
-        [Dualer Partner], [#dualer_partner],
-        table.hline(stroke: .5pt + black),
-        [Betreuer/in], [#betreuer_name],
-        [akad. Titel/Studium], [#betreuer_akademischer_titel],
-        [Email], [#breakable_text(betreuer_email)],
-        [Tel.], [#betreuer_telefon_nummer],
-        table.hline(stroke: .5pt + black),
-      ),
-    ),
-  )
-
   let table_data = (
     [#align(horizon, [*Titel der Arbeit*])],
     [#titel],
@@ -239,20 +198,62 @@
   table_data.push(align(horizon, [*Literaturliste*]))
   table_data.push([#bibliography("literatur.bib", title: "", full: true)])
   table_data.push([*Sprache der\ Ausarbeitung*])
-  table_data.push([#sprache])
+  table_data.push(align(horizon, [#sprache]))
   table_data.push([*Datum der Erstellung\ der Themenmitteilung*])
-  table_data.push([#datum.display("[day].[month].[year]")])
+  table_data.push(align(horizon, [#datum.display("[day].[month].[year]")]))
 
-
-  table(
-    columns: (5cm, 1fr),
-    stroke: .5pt + black,
-    ..table_data,
+  let dual_table = table(
+    columns: (auto, 1fr),
+    rows: (auto, auto, auto, auto, 1fr),
+    stroke: none,
+    table.vline(x: 0, stroke: .50pt + black),
+    table.vline(x: 1, position: end, stroke: .50pt + black),
+    table.vline(x: 1, position: start, stroke: .50pt + black),
+    table.hline(stroke: .50pt + black),
+    [Dualer Partner], [#dualer_partner],
+    table.hline(stroke: .50pt + black),
+    [Betreuer/in], [#betreuer_name],
+    [akad. Titel/Studium], [#betreuer_akademischer_titel],
+    [Email], [#breakable_text(betreuer_email)],
+    [Tel.], [#betreuer_telefon_nummer],
+    table.hline(stroke: .50pt + black),
   )
-  [
-    - Die Freigabe der Projektarbeitsthemen erfolgt durch die Studiengangsleitung. Wenn Sie nicht kurzfristig eine Rückmeldung erhalten gilt das Thema als freigegeben.
-    - Studienarbeiten werden durch den Betreuer freigegeben.
-    - Bachelorarbeiten werden durch den Prüfungsausschuss freigegenben.
-  ]
-}
 
+  context {
+    grid(
+      //TODO: This is bad because it has the 4cm hard coded. I have not yet found a way to fit the size dynamic.
+      rows: (4cm, auto, auto),
+      row-gutter: 1.5em,
+      grid(
+        columns: 2,
+        column-gutter: 1em,
+        stroke: none,
+        table(
+          columns: (auto, auto),
+          rows: (auto, auto, 1fr),
+          stroke: none,
+          table.vline(x: 0, stroke: .50pt + black),
+          table.vline(x: 1, position: end, stroke: .50pt + black),
+          table.vline(x: 1, position: start, stroke: .50pt + black),
+          table.hline(stroke: .50pt + black),
+          [Kurs], [#student_kurs],
+          table.hline(stroke: .50pt + black),
+          [Student/in], [#student],
+          [Email], [#breakable_text(student_email)],
+          table.hline(stroke: .50pt + black),
+        ),
+        dual_table,
+      ),
+      table(
+        columns: (auto, 1fr),
+        stroke: .50pt + black,
+        ..table_data,
+      ),
+      [
+        - Die Freigabe der Projektarbeitsthemen erfolgt durch die Studiengangsleitung. Wenn Sie nicht kurzfristig eine Rückmeldung erhalten gilt das Thema als freigegeben.
+        - Studienarbeiten werden durch den Betreuer freigegeben.
+        - Bachelorarbeiten werden durch den Prüfungsausschuss freigegenben.
+      ],
+    )
+  }
+}
