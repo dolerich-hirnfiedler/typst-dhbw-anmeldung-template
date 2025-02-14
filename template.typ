@@ -64,13 +64,10 @@
                 grid(
                   columns: (1fr, 1fr),
                   text(
-                    size: 1.2em,
-                    weight: 500,
-                    text(
-                      weight: "bold",
-                      font: "Roboto",
-                      [Anmeldung einer Projektarbeit],
-                    ),
+                    size: 1.0em,
+                    weight: "bold",
+                    font: "Roboto",
+                    [Anmeldung einer Projektarbeit],
                   ),
                   align(
                     right + bottom,
@@ -156,29 +153,30 @@
             #box(
               width: 0.75em,
               height: 0.75em,
-              stroke: 0.12em + black,
+              stroke: 1.1pt + black,
               radius: 1pt,
               //fill: black,
               align(
                 center + horizon,
-                text(weight: "bold", size: 1.2em, sym.crossmark),
+                text(weight: "bold", size: 1.3em, sym.crossmark),
               ),
-            ) #text(weight: "bold", size: 1.1em, i)\
+            ) #text(weight: "bold", size: 1.0em, i)\
           ]
         } else {
           [
             #box(
               width: 0.75em,
               height: 0.75em,
-              stroke: 0.12em + black,
+              stroke: 1.1pt + black,
               radius: 1pt,
-            ) #text(weight: "bold", size: 1.1em, i)\
+            ) #text(weight: "bold", size: 1.0em, i)\
           ]
         }
       },
     ),
   )
 
+  v(0.3cm)
   let table_data = (
     [#align(horizon, [*Titel der Arbeit*])],
     [#titel],
@@ -221,7 +219,6 @@
 
   context {
     grid(
-      //TODO: This is bad because it has the 4cm hard coded. I have not yet found a way to fit the size dynamic.
       rows: (4cm, auto, auto),
       row-gutter: 1.5em,
       grid(
